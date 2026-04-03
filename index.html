@@ -13,51 +13,77 @@ body { font-family: Arial, sans-serif; font-size: 14px; color: #333; background:
 a { text-decoration: none; color: inherit; }
 
 /* ===== HEADER ===== */
+/* ===== HEADER ===== */
 .header {
-  background: #fff;
-  border-bottom: 1px solid #e0e0e0;
+  background: #fdf3d0;
+  border-bottom: none;
   position: sticky; top: 0; z-index: 100;
 }
-.header-inner {
+.header-top {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.header-logo { height: 60px; width: 60px; flex-shrink: 0; }
+.header-title-wrap { display: flex; flex-direction: column; }
+.header-title-main {
+  font-size: 18px; font-weight: bold;
+  color: #c0392b; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.header-title-sub {
+  font-size: 15px; font-weight: bold;
+  color: #c0392b; text-transform: uppercase;
+}
+.header-right {
+  display: flex; align-items: center; gap: 16px;
+}
+.header-auth {
+  font-size: 13px; color: #333;
+}
+.header-auth a { color: #333; text-decoration: none; }
+.header-auth a:hover { text-decoration: underline; }
+
+/* Thanh đỏ nav */
+.header-nav-bar {
+  background: #c0392b;
+}
+.header-nav-inner {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 40px;
   display: flex;
   align-items: center;
-  height: 66px;
-  gap: 16px;
 }
-.header-logo { height: 46px; width: 46px; flex-shrink: 0; }
-.nav { display: flex; align-items: center; gap: 10px; flex: 1; }
-.nav-tab {
-  font-size: 13px; color: #555; font-weight: 500;
-  white-space: nowrap; cursor: pointer;
-  border: 1.5px solid #ccc;
-  border-radius: 20px; padding: 6px 16px;
-  background: #fff; transition: all 0.18s;
-  line-height: 1.4;
-}
-.nav-tab.active { color: #c0392b; border-color: #c0392b; background: #fff; }
-.nav-tab:not(.active):hover { background: #f5f5f5; border-color: #bbb; color: #333; }
-
-.hotline-btn {
-  margin-left: auto;
-  background: #c0392b;
+.nav-bar-tab {
   color: #fff;
-  border: none;
-  border-radius: 28px;
-  padding: 10px 20px;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 600;
+  padding: 12px 24px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 9px;
+  border-right: 1px solid rgba(255,255,255,0.2);
   white-space: nowrap;
-  flex-shrink: 0;
+  transition: background 0.15s;
+  display: flex; align-items: center; gap: 8px;
 }
-.hotline-btn .hl-label { font-size: 11px; font-weight: normal; opacity: 0.85; line-height: 1; }
-.hotline-btn .hl-num { font-size: 16px; font-weight: bold; line-height: 1.2; letter-spacing: 0.5px; }
+.nav-bar-tab:first-child { border-left: 1px solid rgba(255,255,255,0.2); }
+.nav-bar-tab:hover { background: rgba(255,255,255,0.12); }
+.nav-bar-tab.active { background: rgba(255,255,255,0.18); }
+
+@media (max-width: 768px) {
+  .header-top { padding: 10px 16px; }
+  .header-nav-inner { padding: 0 16px; }
+  .header-title-main { font-size: 14px; }
+  .header-title-sub { font-size: 13px; }
+  .nav-bar-tab { padding: 10px 14px; font-size: 12px; }
+}
 
 /* ===== PAGE SECTIONS ===== */
 .page-section { display: none; }
@@ -437,21 +463,34 @@ footer {
 
 <!-- HEADER -->
 <div class="header">
-  <div class="header-inner">
-    <img class="header-logo" src="https://tamtru.vndpv.vn/logo.png" alt="Quốc Huy">
-    <nav class="nav">
-      <div class="nav-tab active" onclick="switchPage(0)">Công an phường Mỹ Thượng</div>
-      <div class="nav-tab" onclick="switchPage(1)">📋 Hướng dẫn hồ sơ thủ tục</div>
-    </nav>
-    <button class="hotline-btn">
-      <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:#fff;flex-shrink:0;">
-        <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.01L6.6 10.8z"/>
-      </svg>
-      <div>
-        <div class="hl-label">Hỗ trợ:</div>
-        <div class="hl-num">0234 3979001</div>
+  <div class="header-top">
+    <div class="header-brand">
+      <img class="header-logo" src="https://tamtru.vndpv.vn/logo.png" alt="Quốc Huy">
+      <div class="header-title-wrap">
+        <span class="header-title-main">Cổng dịch vụ công</span>
+        <span class="header-title-sub">Bộ Công An</span>
       </div>
-    </button>
+    </div>
+<div class="header-right">
+  <div class="header-auth">
+    <a href="#">Đăng nhập</a> | <a href="#">Đăng ký</a>
+  </div>
+  <button class="hotline-btn">
+    <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:#fff;flex-shrink:0;">
+      <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.01L6.6 10.8z"/>
+    </svg>
+    <div>
+      <div class="hl-label">Hỗ trợ:</div>
+      <div class="hl-num">0234 3979001</div>
+    </div>
+  </button>
+</div>
+  </div>
+  <div class="header-nav-bar">
+    <div class="header-nav-inner">
+      <div class="nav-bar-tab active" onclick="switchPage(0)">🏠 Công an phường Mỹ Thượng</div>
+      <div class="nav-bar-tab" onclick="switchPage(1)">📋 Hướng dẫn hồ sơ thủ tục</div>
+    </div>
   </div>
 </div>
 
@@ -1062,7 +1101,7 @@ footer {
 <script>
 // Switch between main pages (nav tabs)
 function switchPage(idx) {
-  document.querySelectorAll('.nav-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+  document.querySelectorAll('.nav-bar-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
   document.querySelectorAll('.page-section').forEach((s, i) => s.classList.toggle('active', i === idx));
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
