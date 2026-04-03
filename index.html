@@ -68,7 +68,7 @@ a { text-decoration: none; color: inherit; }
   background: #c0392b;
   width: 100%;
   position: sticky;
-  top: 80px;  /* đúng bằng height của .header */
+  top: 0;   /* ← sửa từ top: 80px thành top: 0 */
   z-index: 99;
 }
 .header-nav-inner {
@@ -1169,6 +1169,16 @@ function copyLink() {
   btn.innerHTML = '<svg viewBox="0 0 24 24"><path fill="#4caf50" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
   setTimeout(() => btn.innerHTML = orig, 1500);
 }
+  // Tự động tính top của nav bar theo chiều cao header thực tế
+function updateNavTop() {
+  const header = document.querySelector('.header');
+  const navBar = document.querySelector('.header-nav-bar');
+  if (header && navBar) {
+    navBar.style.top = header.offsetHeight + 'px';
+  }
+}
+updateNavTop();
+window.addEventListener('resize', updateNavTop);
 </script>
 </body>
 </html>
