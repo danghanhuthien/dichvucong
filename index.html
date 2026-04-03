@@ -16,8 +16,10 @@ a { text-decoration: none; color: inherit; }
 /* ===== HEADER ===== */
 .header {
   background: #fdf3d0;
-  border-bottom: none;
-  position: sticky; top: 0; z-index: 100;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
 }
 .header-top {
   max-width: 1100px;
@@ -65,6 +67,9 @@ a { text-decoration: none; color: inherit; }
 .header-nav-bar {
   background: #c0392b;
   width: 100%;
+  position: sticky;
+  top: 82px;  /* chiều cao của .header */
+  z-index: 99;
 }
 .header-nav-inner {
   max-width: 1100px;
